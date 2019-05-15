@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>people</title>
+    <link rel="stylesheet" type="text/css" href="../css/people.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/people.js"></script>
+</head>
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>person</legend>
+            <p><label>姓名：<input type="text" v-model="person.name"></label></p>
+            <p><label>年龄：<input type="text" v-model="person.age"></label></p>
+            <p><label><select v-model="person.sex">
+                <option name="person" value="male">male</option>
+                <option name="person" value="female">female</option>
+            </select></label></p>
+            <button @click="create">提交</button>
+        </fieldset>
+        <table>
+            <caption>people</caption>
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>删除</th>
+            </tr>
+            </thead>
+            <tr v-for="(p,$index) in people">
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.sex}}</td>
+                <td><button @click="deleted($index)">删除</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
